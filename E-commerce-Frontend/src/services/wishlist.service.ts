@@ -14,7 +14,6 @@ const fetchAll = async () => {
     const response = await axios.get(API_URL, {
       headers
     });
-    console.log(response);
 
     return response;
   } catch (error) {
