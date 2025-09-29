@@ -45,6 +45,16 @@ const Layout = ({ children } : LayoutProps) : JSX.Element => {
     }
   }, []);
 
+  const adminRoute = location.pathname === "/admin-dashboard";
+
+  if(adminRoute){
+    return (
+      <div className="w-full h-full overflow-hidden">
+        {children}
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-2 h-[100vh] bg-white overflow-hidden">
       {/* NavBar */}

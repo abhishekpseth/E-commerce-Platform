@@ -93,11 +93,11 @@ const getWishlistByUser = async (req, res, next) => {
 
     const wishlistItems = await WishList.find({ userID });
 
-    if (!wishlistItems.length) {
-      return res.status(200).json({ data: [] });
-    }
-
     const detailedWishlist = [];
+
+    if (!wishlistItems.length) {
+      return res.status(200).json(detailedWishlist);
+    }
 
     for (const item of wishlistItems) {
       const product = await Product.findById(item.productID).lean();

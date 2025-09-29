@@ -84,9 +84,38 @@ const AdminDashboard = () : JSX.Element => {
   }
 
   return (
-    <div className="relative pb-[60px] h-full overflow-hidden">
-      <div className="h-full p-4 overflow-x-hidden overflow-y-auto bg-white sm:p-8 custom-scrollbar">
-        <div className="flex flex-wrap items-center justify-between py-2">
+    <div className="relative h-screen overflow-hidden">
+      <div className="flex h-full overflow-x-hidden overflow-y-auto bg-white custom-scrollbar">
+        <div className="h-full w-[100px] bg-blue-300 flex flex-col gap-2">
+          <div>Product</div>
+          <div>Orders</div>
+          <div>Riders</div>
+        </div>
+        <div className="flex flex-col flex-1 bg-red-300">
+          <div className="flex justify-between p-3 bg-white">
+            <div>Products</div>
+            <div>Human</div>
+          </div>
+
+          <div className="flex-1 p-4 bg-gray-200">
+            <div className="w-full h-full bg-red-400">
+              <table className="w-full">
+                <thead>
+                  <td>
+                    Product Name
+                  </td>
+                  <td>
+                    Price
+                  </td>
+                  <td>
+                    Stock
+                  </td>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+        {/* <div className="flex flex-wrap items-center justify-between py-2">
           <h1 className="mb-6 text-2xl font-bold text-gray-600">
             Admin Dashboard
           </h1>
@@ -137,10 +166,10 @@ const AdminDashboard = () : JSX.Element => {
               />
             ))}
           </div>
-        )}
+        )} */}
       </div>
 
-      {!loading && orders.length > 0 && (
+      {/* {!loading && orders.length > 0 && (
         <PaginationComponent
           currentPage={currentPage}
           totalDataCount={totalDataCount}
@@ -177,7 +206,7 @@ const AdminDashboard = () : JSX.Element => {
           setSelectedOrder={setSelectedOrder}
           setIsRiderModalOpen={setIsRiderModalOpen}
         />
-      )}
+      )} */}
     </div>
   );
 };
