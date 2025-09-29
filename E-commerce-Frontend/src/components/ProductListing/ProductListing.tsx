@@ -58,13 +58,7 @@ const ProductListing = () : JSX.Element => {
 
   const fetchProducts = (page: number, limit: number) : void => {
     const token = JSON.parse(localStorage.getItem("user-info") || "null")?.token;
-    const userID = token ? jwtUtils.getJWTData(token)?._id : null;
-
-    if(userID === undefined){
-      showNotification("error");
-      console.log("User ID is undefined", userID);
-      return;
-    }
+    const userID: string | undefined = jwtUtils.getJWTData(token)?._id;
 
     const selectedSortingOptionID = selectedSortingOption?.id;
 
