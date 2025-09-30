@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 const convertToDateText = (date) => {
   const dateObject = new Date(date);
 

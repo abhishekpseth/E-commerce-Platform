@@ -1,20 +1,24 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
-const PartialCircle = ({
+interface PartialCircleProps {
+  percentage: number;
+  radius?: number;
+  strokeWidth?: number;
+  children?: ReactNode;
+}
+
+const PartialCircle: React.FC<PartialCircleProps> = ({
   percentage,
   radius = 15,
   strokeWidth = 2,
   children,
 }) => {
   const clampedPercentage = Math.max(0, Math.min(100, percentage));
-
   const circumference = 2 * Math.PI * radius;
-
   const arcLength = (clampedPercentage / 100) * circumference;
-
   const size = radius * 2 + strokeWidth;
 
-  const circleRef = useRef(null);
+  const circleRef = useRef<SVGCircleElement | null>(null);
 
   useEffect(() => {
     const circle = circleRef.current;
