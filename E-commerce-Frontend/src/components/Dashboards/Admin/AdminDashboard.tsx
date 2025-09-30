@@ -5,12 +5,6 @@ import OrderService from "../../../services/order.service";
 import useNotification from "../../../custom-hooks/useNotification";
 
 import Loading from "../../Common/Loading/Loading";
-import SelectBox from "../../Common/SelectBox/SelectBox";
-import UpdateRiderModal from "./UpdateRiderModal/UpdateRiderModal";
-import ChangeStatusModal from "./ChangeStatusModal/ChangeStatusModal";
-import AdminOrderItemCard from "./AdminOrderItemCard/AdminOrderItemCard";
-import PaginationComponent from "../../Common/PaginationComponent/PaginationComponent";
-import ProductDetailsModal from "../../Orders/ProductDetailsModal/ProductDetailsModal";
 import type { AdminOrder } from "../../../types/Order";
 
 interface DataPeriod {
@@ -23,17 +17,24 @@ const AdminDashboard = () : JSX.Element => {
   
   const [orders, setOrders] = useState<AdminOrder[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [showProductDetails, setShowProductDetails] = useState<boolean>(false);
-  const [selectedOrder, setSelectedOrder] = useState<AdminOrder | null>(null);
-  const [isOrderStatusModalOpen, setIsOrderStatusModalOpen] = useState<boolean>(false);
-  const [isRiderModalOpen, setIsRiderModalOpen] = useState<boolean>(false);
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  // const [showProductDetails, setShowProductDetails] = useState<boolean>(false);
+  // const [selectedOrder, setSelectedOrder] = useState<AdminOrder | null>(null);
+  // const [isOrderStatusModalOpen, setIsOrderStatusModalOpen] = useState<boolean>(false);
+  // const [isRiderModalOpen, setIsRiderModalOpen] = useState<boolean>(false);
+  // const [currentPage, setCurrentPage] = useState<number>(1);
+  const currentPage : number = 1;
   const [dataPerPage] = useState<number>(10);
   const [totalDataCount, setTotalDataCount] = useState<number>(0);
-  const [selectedDataPeriod, setSelectedDataPeriod] = useState<DataPeriod>({
+  // const [selectedDataPeriod, setSelectedDataPeriod] = useState<DataPeriod>({
+    // name: "All",
+    // value: "All",
+  // });
+  const selectedDataPeriod : DataPeriod = {
     name: "All",
     value: "All",
-  });
+  }
+
+  console.log({orders, totalDataCount});
 
   const fetchOrders = (page: number, limit: number) => {
     setLoading(true);
@@ -58,14 +59,14 @@ const AdminDashboard = () : JSX.Element => {
       });
   };
 
-  const paginate = (pageNumber : number) : void => {
-    setCurrentPage(pageNumber);
-    fetchOrders(pageNumber, dataPerPage);
-  };
+  // const paginate = (pageNumber : number) : void => {
+  //   setCurrentPage(pageNumber);
+  //   fetchOrders(pageNumber, dataPerPage);
+  // };
 
-  const handleChangeDataPeriod = (period : DataPeriod) : void => {
-    setSelectedDataPeriod(period);
-  };
+  // const handleChangeDataPeriod = (period : DataPeriod) : void => {
+  //   setSelectedDataPeriod(period);
+  // };
 
   useEffect(() => {
     fetchOrders(currentPage, dataPerPage);

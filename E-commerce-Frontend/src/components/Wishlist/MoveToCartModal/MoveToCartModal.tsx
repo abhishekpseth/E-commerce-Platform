@@ -1,6 +1,6 @@
 import { useState, type JSX } from "react";
 
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 
 import { MdCancel } from "react-icons/md";
 
