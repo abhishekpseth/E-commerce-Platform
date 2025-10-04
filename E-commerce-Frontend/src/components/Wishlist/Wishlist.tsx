@@ -50,11 +50,11 @@ const Wishlist = () : JSX.Element => {
     <div className="relative h-full overflow-hidden">
       <div className="h-full p-8 overflow-auto bg-white custom-scrollbar">
         <h1 className="mb-6 text-2xl font-bold text-gray-600">My Wishlist</h1>
-        {wishlistItems.length === 0 ? (
+        {wishlistItems?.length === 0 ? (
           <div className="text-center text-gray-500">Wishlist is empty.</div>
         ) : (
           <div className="flex flex-wrap justify-center flex-1 gap-[40px] p-2 bg-white relative">
-            {wishlistItems.map((item, index) => (
+            {wishlistItems?.map((item, index) => (
               <WishlistedItemCard key={index} wishlistedItem={item} getWishlist={getWishlist} setSelectedWishlistedItem={setSelectedWishlistedItem} />
             ))}
           </div>

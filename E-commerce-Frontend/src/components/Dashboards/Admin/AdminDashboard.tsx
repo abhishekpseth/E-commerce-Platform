@@ -5,12 +5,6 @@ import OrderService from "../../../services/order.service";
 import useNotification from "../../../custom-hooks/useNotification";
 
 import Loading from "../../Common/Loading/Loading";
-import SelectBox from "../../Common/SelectBox/SelectBox";
-import UpdateRiderModal from "./UpdateRiderModal/UpdateRiderModal";
-import ChangeStatusModal from "./ChangeStatusModal/ChangeStatusModal";
-import AdminOrderItemCard from "./AdminOrderItemCard/AdminOrderItemCard";
-import PaginationComponent from "../../Common/PaginationComponent/PaginationComponent";
-import ProductDetailsModal from "../../Orders/ProductDetailsModal/ProductDetailsModal";
 import type { AdminOrder } from "../../../types/Order";
 
 interface DataPeriod {
@@ -23,17 +17,24 @@ const AdminDashboard = () : JSX.Element => {
   
   const [orders, setOrders] = useState<AdminOrder[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [showProductDetails, setShowProductDetails] = useState<boolean>(false);
-  const [selectedOrder, setSelectedOrder] = useState<AdminOrder | null>(null);
-  const [isOrderStatusModalOpen, setIsOrderStatusModalOpen] = useState<boolean>(false);
-  const [isRiderModalOpen, setIsRiderModalOpen] = useState<boolean>(false);
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  // const [showProductDetails, setShowProductDetails] = useState<boolean>(false);
+  // const [selectedOrder, setSelectedOrder] = useState<AdminOrder | null>(null);
+  // const [isOrderStatusModalOpen, setIsOrderStatusModalOpen] = useState<boolean>(false);
+  // const [isRiderModalOpen, setIsRiderModalOpen] = useState<boolean>(false);
+  // const [currentPage, setCurrentPage] = useState<number>(1);
+  const currentPage : number = 1;
   const [dataPerPage] = useState<number>(10);
   const [totalDataCount, setTotalDataCount] = useState<number>(0);
-  const [selectedDataPeriod, setSelectedDataPeriod] = useState<DataPeriod>({
+  // const [selectedDataPeriod, setSelectedDataPeriod] = useState<DataPeriod>({
+    // name: "All",
+    // value: "All",
+  // });
+  const selectedDataPeriod : DataPeriod = {
     name: "All",
     value: "All",
-  });
+  }
+
+  console.log({orders, totalDataCount});
 
   const fetchOrders = (page: number, limit: number) => {
     setLoading(true);
@@ -58,14 +59,14 @@ const AdminDashboard = () : JSX.Element => {
       });
   };
 
-  const paginate = (pageNumber : number) : void => {
-    setCurrentPage(pageNumber);
-    fetchOrders(pageNumber, dataPerPage);
-  };
+  // const paginate = (pageNumber : number) : void => {
+  //   setCurrentPage(pageNumber);
+  //   fetchOrders(pageNumber, dataPerPage);
+  // };
 
-  const handleChangeDataPeriod = (period : DataPeriod) : void => {
-    setSelectedDataPeriod(period);
-  };
+  // const handleChangeDataPeriod = (period : DataPeriod) : void => {
+  //   setSelectedDataPeriod(period);
+  // };
 
   useEffect(() => {
     fetchOrders(currentPage, dataPerPage);
@@ -84,9 +85,38 @@ const AdminDashboard = () : JSX.Element => {
   }
 
   return (
-    <div className="relative pb-[60px] h-full overflow-hidden">
-      <div className="h-full p-4 overflow-x-hidden overflow-y-auto bg-white sm:p-8 custom-scrollbar">
-        <div className="flex flex-wrap items-center justify-between py-2">
+    <div className="relative h-screen overflow-hidden">
+      <div className="flex h-full overflow-x-hidden overflow-y-auto bg-white custom-scrollbar">
+        <div className="h-full w-[100px] bg-blue-300 flex flex-col gap-2">
+          <div>Product</div>
+          <div>Orders</div>
+          <div>Riders</div>
+        </div>
+        <div className="flex flex-col flex-1 bg-red-300">
+          <div className="flex justify-between p-3 bg-white">
+            <div>Products</div>
+            <div>Human</div>
+          </div>
+
+          <div className="flex-1 p-4 bg-gray-200">
+            <div className="w-full h-full bg-red-400">
+              <table className="w-full">
+                <thead>
+                  <td>
+                    Product Name
+                  </td>
+                  <td>
+                    Price
+                  </td>
+                  <td>
+                    Stock
+                  </td>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+        {/* <div className="flex flex-wrap items-center justify-between py-2">
           <h1 className="mb-6 text-2xl font-bold text-gray-600">
             Admin Dashboard
           </h1>
@@ -137,10 +167,10 @@ const AdminDashboard = () : JSX.Element => {
               />
             ))}
           </div>
-        )}
+        )} */}
       </div>
 
-      {!loading && orders.length > 0 && (
+      {/* {!loading && orders.length > 0 && (
         <PaginationComponent
           currentPage={currentPage}
           totalDataCount={totalDataCount}
@@ -177,7 +207,7 @@ const AdminDashboard = () : JSX.Element => {
           setSelectedOrder={setSelectedOrder}
           setIsRiderModalOpen={setIsRiderModalOpen}
         />
-      )}
+      )} */}
     </div>
   );
 };

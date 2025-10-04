@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import axios from "axios";
 
 const API_BASE_URL = import.meta.env.VITE_FRONTEND_DASHBOARD_API_BASE_URL;

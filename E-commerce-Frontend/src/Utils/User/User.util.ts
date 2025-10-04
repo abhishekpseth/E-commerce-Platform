@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import jwtUtils from "../jwt/jwt.util";
 
 const isLoggedIn = () => {

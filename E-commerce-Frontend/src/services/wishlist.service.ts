@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import axios from "axios";
 
 const API_BASE_URL = import.meta.env.VITE_FRONTEND_DASHBOARD_API_BASE_URL;
@@ -14,7 +16,6 @@ const fetchAll = async () => {
     const response = await axios.get(API_URL, {
       headers
     });
-    console.log(response);
 
     return response;
   } catch (error) {

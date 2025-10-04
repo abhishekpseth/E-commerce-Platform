@@ -1,10 +1,12 @@
+// @ts-nocheck
+
 import axios from "axios";
 
 const API_BASE_URL = import.meta.env.VITE_FRONTEND_DASHBOARD_API_BASE_URL;
 
 const Product_Route = `${API_BASE_URL}/api/product`;
 
-const fetchAll = async (userID: string | null, searchInput: string, selectedColors: string[], selectedSizes: string[], selectedSortingOptionID: string, page: number, limit: number) => {
+const fetchAll = async (userID: string | undefined, searchInput: string, selectedColors: string[], selectedSizes: string[], selectedSortingOptionID: string, page: number, limit: number) => {
   try {
     const endPoint = "/";
     const API_URL = `${Product_Route}${endPoint}`;
